@@ -11,7 +11,7 @@ module.exports = (secretKey, routes) ->
         app.use express.bodyParser()
         app.use express.cookieParser()
         app.use express.session(
-            store: new DynamoDBStore(reapInterval: -1)
+            store: new DynamoDBStore(AWSConfigPath: '../../aws-config.json', reapInterval: -1)
             cookie: {maxAge: 365 * 24 * 60 * 60 * 1000}
             secret: secretKey)
         app.use app.router
